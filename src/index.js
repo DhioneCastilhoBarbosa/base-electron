@@ -34,7 +34,10 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', function(){
+  createWindow()
+  //autoUpdater.checkForUpdatesAndNotify();
+})
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -61,7 +64,7 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     type: 'info',
     buttons: ['Restart', 'Later'],
     title: 'Application Update',
-    message: process.platform === 'darwin' ? releaseNotes : releaseName,
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
     detail:
       'A new version has been downloaded. Restart the application to apply the updates.'
   }

@@ -6,6 +6,7 @@ module.exports = {
   publishers: [
     {
       name: '@electron-forge/publisher-github',
+      platforms: ['darwin', 'linux'],
       config: {
         repository: {
           owner: process.env.GITHUB_REPOSITORY_OWNER,
@@ -30,7 +31,7 @@ module.exports = {
       name: "@electron-forge/maker-squirrel",
       config: {
         name: "dualbase",
-        version:'1.0.2',
+        version:'1.0.5',
         setupExe: "dualbase.exe",
         appIconPath: path.join(__dirname, "assets","icon.ico"),
         loadingGif: path.join(__dirname, "assets","cubi.gif"),
@@ -39,6 +40,8 @@ module.exports = {
         noMsi: true,
       },
     },
+
+
 
     {
       name: '@electron-forge/maker-deb',

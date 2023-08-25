@@ -1,11 +1,28 @@
 const path = require('path');
 
 module.exports = {
+
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'DhioneCastilhoBarbosa',
+          name: 'base-electron'
+        },
+        prerelease: false,
+        draft: true
+      }
+    }
+  ],
+
   packagerConfig: {
     asar: true,
     icon: path.join(__dirname, "assets", "icon")
   },
+
   rebuildConfig: {},
+
   makers: [
         {
       name: "@electron-forge/maker-squirrel",
@@ -20,15 +37,20 @@ module.exports = {
         noMsi: true,
       },
     },
+
     {
       name: '@electron-forge/maker-deb',
       config: {},
     },
+
     {
       name: '@electron-forge/maker-rpm',
       config: {},
     },
+
   ],
+
+
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',

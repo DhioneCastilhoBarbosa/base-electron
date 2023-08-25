@@ -1,16 +1,17 @@
 const { app, BrowserWindow,autoUpdater} = require('electron');
 const path = require('path');
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
 require('update-electron-app')({
-  repo: 'https://github.com/DhioneCastilhoBarbosa/base-electron',
-  updateInterval: '10 minutes',
-  logger: require('electron-log')
+  updateInterval: '5 minutes',
+  logger: require('electron-log'),
+  notifyUser: true,
 })
+
+
 
 const createWindow = () => {
   // Create the browser window.
@@ -28,7 +29,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -36,7 +37,7 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', function(){
   createWindow()
-  //autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -64,18 +65,19 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     type: 'info',
     buttons: ['Restart', 'Later'],
     title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    message: process.platform === 'darwin' ? releaseNotes : releaseName,
     detail:
       'A new version has been downloaded. Restart the application to apply the updates.'
   }
 
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+  dialog.showMessageBox(dialogOpts)
+  /*dialog.showMessageBox(dialogOpts).then((returnValue) => {
     if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
+  })*/
 })
 
-autoUpdater.on('error', (message) => {
+/*autoUpdater.on('error', (message) => {
   console.error('There was a problem updating the application')
   console.error(message)
-})
+})*/
 

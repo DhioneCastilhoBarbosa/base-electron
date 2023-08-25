@@ -1,11 +1,12 @@
 {
   "name": "dualbase",
   "productName": "dualbase",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "My Electron application description",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DhioneCastilhoBarbosa/base-electron"
+  "repository": "https://github.com/DhioneCastilhoBarbosa/base-electron",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   },
   "main": "src/index.js",
   "scripts": {
@@ -35,6 +36,7 @@
     "@electron-forge/maker-wix": "^6.4.1",
     "@electron-forge/maker-zip": "^6.4.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.4.1",
+    "@electron-forge/publisher-bitbucket": "^6.4.1",
     "@electron-forge/publisher-github": "^6.4.1",
     "electron": "26.1.0",
     "electron-packager": "^17.1.2"

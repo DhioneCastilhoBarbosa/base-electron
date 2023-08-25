@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config()
 
 module.exports = {
 
@@ -7,8 +8,9 @@ module.exports = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'DhioneCastilhoBarbosa',
-          name: 'base-electron'
+          owner: process.env.GITHUB_REPOSITORY_OWNER,
+          name: process.env.GITHUB_REPOSITORY_NAME,
+          token: process.env.GITHUB_TOKEN 
         },
         prerelease: false,
         draft: true

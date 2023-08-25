@@ -1,7 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow,autoUpdater} = require('electron');
 const path = require('path');
-
-
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -77,3 +75,4 @@ autoUpdater.on('error', (message) => {
   console.error('There was a problem updating the application')
   console.error(message)
 })
+

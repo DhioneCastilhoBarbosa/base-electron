@@ -28,7 +28,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -61,7 +61,7 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     type: 'info',
     buttons: ['Restart', 'Later'],
     title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    message: process.platform === 'darwin' ? releaseNotes : releaseName,
     detail:
       'A new version has been downloaded. Restart the application to apply the updates.'
   }

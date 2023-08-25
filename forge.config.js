@@ -30,7 +30,7 @@ module.exports = {
       name: "@electron-forge/maker-squirrel",
       config: {
         name: "dualbase",
-        version:'1.0.0',
+        version:'1.0.2',
         setupExe: "dualbase.exe",
         appIconPath: path.join(__dirname, "assets","icon.ico"),
         loadingGif: path.join(__dirname, "assets","cubi.gif"),
